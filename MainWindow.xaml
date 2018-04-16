@@ -3,10 +3,48 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Speku"
+        xmlns:self="clr-namespace:Speku"
+
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="504" Width="700">
     <Grid>
-        
+        <TreeView x:Name="MainTreeView" Margin="0,0,505,0">
+            <TreeViewItem x:Name="HenkiloTreeView" Header="Henkilöt">
+            <TreeViewItem.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Foreground='Red' Text='{Binding Nimi}' />
+                </DataTemplate>
+            </TreeViewItem.ItemTemplate>
+            </TreeViewItem>
+        </TreeView>
+        <!--
+        <TreeView x:Name="MainTreeView" Margin="10,10,505,10" SelectedItemChanged="MainTreeView_SelectedItemChanged">
+            <TreeView.Resources>
+                <HierarchicalDataTemplate ItemsSource="{Binding Nimi}">
+                    <TextBlock Text="{Binding Title}" />
+                </HierarchicalDataTemplate>
+                <DataTemplate DataType="{x:Type FamilyMember}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/WpfTutorialSamples;component/Images/user.png" Margin="0,0,5,0" />
+                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text=" (" Foreground="Green" />
+                        <TextBlock Text="{Binding Age}" Foreground="Green" />
+                        <TextBlock Text=" years)" Foreground="Green" />
+                    </StackPanel>
+                </DataTemplate>
+            </TreeView.Resources>
+        </TreeView>
+        -->
+        <!--Gridi sisältää datatiedon-->
+        <Grid Margin="192,10,10,10">
+            <StackPanel x:Name="DataPanel" HorizontalAlignment="Left" Height="433" Margin="10,10,0,0" VerticalAlignment="Top" Width="470">
+                <StackPanel>
+                    <TextBlock Text="{Binding AllInfo}" />
+                    <TextBlock Text="{Binding Nimi}" />
+                    <TextBlock Text="{Binding Henkilotunnus}"/>
+                    <TextBlock Text="{Binding Tilinumero}"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

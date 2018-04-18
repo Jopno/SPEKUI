@@ -8,8 +8,8 @@ namespace Speku
 {
      public class Tyosuoritus
     {
-        public int TyosuoritusID { get; set; }
-        public Henkilo henkilo { get; set; }
+        public string TyosuoritusID { get; set; }
+        public string henkilo { get; set; }
         public Tyo tyo { get; set; }
     }
     public class Tyo

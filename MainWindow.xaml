@@ -8,43 +8,72 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="504" Width="700">
     <Grid>
-        <TreeView x:Name="MainTreeView" Margin="0,0,505,0">
-            <TreeViewItem x:Name="HenkiloTreeView" Header="Henkilöt">
-            <TreeViewItem.ItemTemplate>
+        <TabControl x:Name="MainTabControl" HorizontalAlignment="Left" Height="456" Margin="192,10,0,0" VerticalAlignment="Top" Width="492">
+            <TabItem x:Name="HenkiloTab" Header="Henkilotiedot">
+                <Grid Margin="10,9,9.731,9.985">
+                    <TextBlock HorizontalAlignment="Left" Margin="10,16,0,0" TextWrapping="Wrap" Text="Nimi" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,44,0,0" TextWrapping="Wrap" Text="Syntymaaika" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,72,0,0" TextWrapping="Wrap" Text="Palokunta" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,100,0,0" TextWrapping="Wrap" Text="Tilinumero" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,128,0,0" TextWrapping="Wrap" Text="Liittyminen" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,156,0,0" TextWrapping="Wrap" Text="Eroaminen" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,184,0,0" TextWrapping="Wrap" Text="Henkilötunnus" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
+                    <TextBox x:Name="NameBox" HorizontalAlignment="Left" Height="23" Margin="97,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="SyntymaaikaBox" HorizontalAlignment="Left" Height="23" Margin="97,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="PalokuntaBox" HorizontalAlignment="Left" Height="23" Margin="97,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="TilinumBox" HorizontalAlignment="Left" Height="23" Margin="97,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="LiittyminenBox" HorizontalAlignment="Left" Height="23" Margin="97,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="EroaminenBox" HorizontalAlignment="Left" Height="23" Margin="97,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="HenkilotunnusBox" HorizontalAlignment="Left" Height="23" Margin="97,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="PalokuntaTab" Header="Palokuntatiedot">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left" Margin="10,16,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,44,0,0" TextWrapping="Wrap" Text="Tyyppi" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,72,0,0" TextWrapping="Wrap" Text="Paikkakunta" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,100,0,0" TextWrapping="Wrap" Text="Alue" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
+                    <TextBox x:Name="PalokuntaIDBox" HorizontalAlignment="Left" Height="23" Margin="97,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="TyyppiBox" HorizontalAlignment="Left" Height="23" Margin="97,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="PaikkakuntaBox" HorizontalAlignment="Left" Height="23" Margin="97,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="AlueBox" HorizontalAlignment="Left" Height="23" Margin="97,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="TyoTab" Header="Työtiedot">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Left" Margin="10,16,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,44,0,0" TextWrapping="Wrap" Text="Henkilo" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
+                   
+                    <TextBox x:Name="TyosuoritusIDBox" HorizontalAlignment="Left" Height="23" Margin="97,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="TyoHenkiloBox" HorizontalAlignment="Left" Height="23" Margin="97,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <ListBox x:Name="HenkiloListBox" HorizontalAlignment="Left" Height="128" Margin="10,24,0,0" VerticalAlignment="Top" Width="177" SelectionChanged="HenkiloListBox_SelectionChanged">
+            <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Foreground='Red' Text='{Binding Nimi}' />
+                    <TextBlock Text="{Binding Path=Nimi}"/>
                 </DataTemplate>
-            </TreeViewItem.ItemTemplate>
-            </TreeViewItem>
-        </TreeView>
-        <!--
-        <TreeView x:Name="MainTreeView" Margin="10,10,505,10" SelectedItemChanged="MainTreeView_SelectedItemChanged">
-            <TreeView.Resources>
-                <HierarchicalDataTemplate ItemsSource="{Binding Nimi}">
-                    <TextBlock Text="{Binding Title}" />
-                </HierarchicalDataTemplate>
-                <DataTemplate DataType="{x:Type FamilyMember}">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/WpfTutorialSamples;component/Images/user.png" Margin="0,0,5,0" />
-                        <TextBlock Text="{Binding Name}" />
-                        <TextBlock Text=" (" Foreground="Green" />
-                        <TextBlock Text="{Binding Age}" Foreground="Green" />
-                        <TextBlock Text=" years)" Foreground="Green" />
-                    </StackPanel>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox x:Name="PalokuntaListBox" HorizontalAlignment="Left" Height="134" Margin="10,175,0,0" VerticalAlignment="Top" Width="177" SelectionChanged="PalokuntaListBox_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=PalokuntaID}"/>
                 </DataTemplate>
-            </TreeView.Resources>
-        </TreeView>
-        -->
-        <!--Gridi sisältää datatiedon-->
-        <Grid Margin="192,10,10,10">
-            <StackPanel x:Name="DataPanel" HorizontalAlignment="Left" Height="433" Margin="10,10,0,0" VerticalAlignment="Top" Width="470">
-                <StackPanel>
-                    <TextBlock Text="{Binding AllInfo}" />
-                    <TextBlock Text="{Binding Nimi}" />
-                    <TextBlock Text="{Binding Henkilotunnus}"/>
-                    <TextBlock Text="{Binding Tilinumero}"/>
-                </StackPanel>
-            </StackPanel>
-        </Grid>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox x:Name="TyoListBox" HorizontalAlignment="Left" Height="128" Margin="10,338,0,0" VerticalAlignment="Top" Width="177" SelectionChanged="TyoListBox_SelectionChanged" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=TyosuoritusID}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label Content="Henkilot&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="24"/>
+        <Label Content="Palokunnat&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top" Height="23"/>
+        <Label Content="Palokunnat&#xA;" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top" Height="23"/>
+        <Label Content="Työt" HorizontalAlignment="Left" Margin="10,314,0,0" VerticalAlignment="Top" Height="24"/>
     </Grid>
 </Window>

@@ -63,7 +63,7 @@ namespace Speku
             ObservableCollection<Palokunta> palokunnat = new ObservableCollection<Palokunta>();
             //luodaan yhteys labranetin mysql-palvelimelle
             string connStr = GetMysqlConnectionString(password);
-            string sql = "SELECT palokuntaid, tyyppi, paikkakunta, alue FROM palokunta";
+            string sql = "SELECT  palokuntaid, tyyppi, paikkakunta, alue, palokuntanimi FROM palokunta";
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 conn.Open();
@@ -73,12 +73,11 @@ namespace Speku
                     while (reader.Read())
                     {
                         Palokunta s = new Palokunta();
-
+                        s.PalokuntaNimi = reader.GetString(4);
                         s.PalokuntaID = reader.GetString(0);
                         s.Tyyppi = reader.GetString(1);
                         s.paikkakunta = reader.GetString(2);
                         s.alue = reader.GetString(3);
-
                         palokunnat.Add(s);
                     }
                     return palokunnat;
@@ -92,7 +91,7 @@ namespace Speku
             ObservableCollection<Tyosuoritus> tyot = new ObservableCollection<Tyosuoritus>();
             //luodaan yhteys labranetin mysql-palvelimelle
             string connStr = GetMysqlConnectionString(password);
-            string sql = "SELECT tyosuoritus.* FROM tyosuoritus";
+            string sql = "SELECT * FROM tyosuoritus";
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 conn.Open();
@@ -113,6 +112,5 @@ namespace Speku
             }
         }
     }
-
 }
 

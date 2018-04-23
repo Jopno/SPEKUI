@@ -66,6 +66,7 @@ namespace Speku
         private void PalokuntaListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             MainTabControl.SelectedIndex = 1;
+            PalokuntaNimi.Text = palokuntalista[PalokuntaListBox.SelectedIndex].PalokuntaNimi;
             PalokuntaIDBox.Text = palokuntalista[PalokuntaListBox.SelectedIndex].PalokuntaID;
             TyyppiBox.Text = palokuntalista[PalokuntaListBox.SelectedIndex].Tyyppi;
             PaikkakuntaBox.Text = palokuntalista[PalokuntaListBox.SelectedIndex].paikkakunta;

@@ -33,10 +33,13 @@
                     <TextBlock HorizontalAlignment="Left" Margin="10,44,0,0" TextWrapping="Wrap" Text="Tyyppi" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,72,0,0" TextWrapping="Wrap" Text="Paikkakunta" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,100,0,0" TextWrapping="Wrap" Text="Alue" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,128,0,0" TextWrapping="Wrap" Text="PalokuntaNimi" VerticalAlignment="Top" Width="82" TextAlignment="Right"/>
+                  
                     <TextBox x:Name="PalokuntaIDBox" HorizontalAlignment="Left" Height="23" Margin="97,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <TextBox x:Name="TyyppiBox" HorizontalAlignment="Left" Height="23" Margin="97,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <TextBox x:Name="PaikkakuntaBox" HorizontalAlignment="Left" Height="23" Margin="97,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <TextBox x:Name="AlueBox" HorizontalAlignment="Left" Height="23" Margin="97,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="PalokuntaNimi" HorizontalAlignment="Left" Height="37" Margin="97,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="TyoTab" Header="Työtiedot">
@@ -60,7 +63,7 @@
         <ListBox x:Name="PalokuntaListBox" HorizontalAlignment="Left" Height="134" Margin="10,175,0,0" VerticalAlignment="Top" Width="177" SelectionChanged="PalokuntaListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Path=PalokuntaID}"/>
+                    <TextBlock Text="{Binding Path=PalokuntaNimi}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

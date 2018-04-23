@@ -8,6 +8,7 @@ namespace Speku
 {
     public class Palokunta
     {
+        public string PalokuntaNimi { get; set; }
         public string PalokuntaID { get; set; }
         public string Tyyppi { get; set; }
         public string paikkakunta { get; set; }
